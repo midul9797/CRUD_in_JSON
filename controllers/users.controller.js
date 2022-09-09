@@ -34,15 +34,17 @@ module.exports.saveUser = (req, res, next) => {
     update(users);
     res.send(users);
   } else {
+    console.log(newUser)
     res.send("Please give all information correctly");
   }
 };
 
 module.exports.updateUser = (req, res, next) => {
   const { id } = req.params;
+
   //Index of updated user
   let position;
-  if (id == Number) {
+  if (id == Number(id)) {
     users.forEach((user, index) => {
       if (user.id === Number(id)) {
         position = index;
@@ -83,7 +85,7 @@ res.send(users);
 };
 module.exports.deleteUser = (req, res, next) => {
   const { id } = req.params;
-  if (id == Number) {
+  if (id == Number(id)) {
     users = users.filter((user) => user.id !== Number(id));
     update(users);
     res.send(users);
